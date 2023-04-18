@@ -35,7 +35,7 @@ const siteContent = { // BU NESNEYİ DEĞİŞTİRMEYİN
   "images": {
     "logo-img": "http://localhost:9000/img/logo.png",
     "cta-img": "http://localhost:9000/img/cta.png",
-    "accent-img": "http://localhost:9000/img/accent.png",
+    "middle-img": "http://localhost:9000/img/accent.png",
   },
 };
 
@@ -43,3 +43,49 @@ console.log('Proje açıldı!')
 
 
 /* Kodlar Buradan aşağıya */
+
+const listItems = document.querySelectorAll('nav a');
+
+listItems.forEach((item,index) => {
+  item.textContent = siteContent.nav[`nav-item-${index}`];
+  item.setAttribute('class','italic');
+})
+
+const footer = document.querySelector('footer a');
+footer.textContent = siteContent.footer.copyright;
+footer.setAttribute('class', 'bold');
+
+const imgs = document.querySelectorAll('img');
+imgs.forEach((img,index) =>{
+  img.src = siteContent.images[img.id];
+})
+
+document.getElementsByTagName('h1')[0].textContent = 'Bu DOM Mükemmel';
+document.getElementsByTagName('button')[0].textContent = 'Başlayın';
+
+const contactSection = document.querySelector(".contact");
+
+const contactData = Object.values(siteContent.iletisim);
+
+contactSection.childNodes.forEach((member,index) =>{
+  member.textContent = contactData[index-1];
+})
+
+const mainText  = document.getElementsByClassName('text-content');
+const iletisimData = Object.values(siteContent["ana-içerik"]);
+console.log(iletisimData);
+for(let i=0; i<mainText.length;i++){
+  for(let x=0; x<iletisimData.length;x++){
+    
+    mainText[i].textContent = iletisimData[x];
+  }
+  
+}
+
+
+
+
+
+
+
+
